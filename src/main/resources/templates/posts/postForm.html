@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+   <meta charset="UTF-8">
+   <title>FirstApp</title>
+</head>
+<body>
+    <h1>新規投稿ページ</h1>
+    <form th:action="@{/posts}" th:method="post" th:object="${postForm}">
+      <input type="text" id="summaryInput" th:field="*{content}">
+      <button type="submit">作成</button>
+    </form>
+</body>
+</html>
