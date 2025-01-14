@@ -1,0 +1,27 @@
+version: '3.8'            # DockerComposeのファイルフォーマットバージョン
+
+services:
+  # Webアプリケーションのサーバーサイドサービス
+  app:
+    container_name: app   # コンテナ名
+    build: .              # 現在のディレクトリのDockerfileを使用してイメージをビルドする
+    ports:
+      - "8080:8080"       # PCの8080ポートをコンテナの8080ポートにマッピングする
+    depends_on:           # 他サービスとの依存関係があることを示す
+      - db
+    env_file:
+      - .env
+
+  # データベースのサービス
+  db:
+    image: postgres:16    # PostgreSQL のイメージ
+    container_name: db    # コンテナ名
+    ports:
+      - "5433:5432"       # ホストPCのポート5433と、コンテナのポート5432をマッピングする
+    env_file:
+      - .env
+    volumes:
+        - firstapp-volume:/var/lib/postgresql/data
+
+volumes:
+  firstapp-volume:

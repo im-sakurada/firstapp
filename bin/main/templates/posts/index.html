@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>FirstApp</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Top page</h1>
+    <a th:href="@{/posts/new}">新規投稿</a>
+    <div th:each="post : ${postList}">
+      <div class="post">
+        <div class="post-date">
+          投稿日時：<span th:text="${post.createdAt}"></span>
+        </div>
+        <div class="post-content">
+          <span th:text="${post.content}"></span>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
