@@ -9,8 +9,8 @@ services:
       - "8080:8080"       # PCの8080ポートをコンテナの8080ポートにマッピングする
     depends_on:           # 他サービスとの依存関係があることを示す
       - db
-    env_file:
-      - .env
+   # env_file:
+   #   - .env
 
   # データベースのサービス
   db:
@@ -18,8 +18,8 @@ services:
     container_name: db    # コンテナ名
     ports:
       - "5433:5432"       # ホストPCのポート5433と、コンテナのポート5432をマッピングする
-    env_file:
-      - .env
+   # env_file:
+    #  - .env
     volumes:
         - firstapp-volume:/var/lib/postgresql/data
 
